@@ -23,6 +23,15 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+# Money gem integration with Rails (https://github.com/RubyMoney/money-rails)
+gem 'money-rails', '~>1.12'
+# Flexible authentication solution for Rails with Warden (https://github.com/plataformatec/devise)
+gem 'devise'
+# Object factory for Rails (https://github.com/thoughtbot/factory_bot_rails)
+gem 'factory_bot_rails'
+# A library for generating fake data (https://github.com/stympy/faker)
+gem 'faker', '~>1.9'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

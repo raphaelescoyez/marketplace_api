@@ -9,6 +9,7 @@
 #  product_price_currency :string           default("EUR"), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  id                     :integer          not null, primary key
 #
 
 class OrdersProduct < ApplicationRecord

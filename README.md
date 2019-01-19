@@ -8,6 +8,11 @@ This application is deployed on Heroku and can be tested easily thanks to Graphi
 
 ## Local Installation
 
+### Prerequisite
+- Ruby 2.5.0
+- Rails 5.2
+- Postgresql 
+
  1. Clone this repo
  2. Run `bundle install`
  3. Run `rails db:create && rails db:migrate && rails db:seed`
@@ -22,7 +27,7 @@ Carts and Orders have very similar logic, the only difference is that Cart model
 ## How to use
 
 Use the following queries to complete an order.
-For more queries, follow the generated documentation on GraphiQL right pannel.
+For more queries, follow the generated documentation on [GraphiQL](https://marketplace-api-demo.herokuapp.com/) right pannel.
 
 ### 1) Display all products
 ```

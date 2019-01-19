@@ -12,14 +12,14 @@
 #  updated_at             :datetime         not null
 #
 
-class OrdersProduct < ApplicationRecord
-  belongs_to :order
-  belongs_to :product
+require 'rails_helper'
 
-  monetize :product_price_cents
-  monetize :total_price_cents
+RSpec.describe OrdersProduct, type: :model do
 
-  def total_price_cents
-    product_price_cents * quantity
+  describe 'total_price_cents' do
+    it 'returns quantity * product_price_cents' do
+      orders_product = OrdersProduct.new(quantity: 6, product_price_cents: 100)
+      expect(orders_product.total_price_cents).to eq 600
+    end
   end
 end

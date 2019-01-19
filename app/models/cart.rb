@@ -18,21 +18,21 @@ class Cart < ApplicationRecord
   end
 
   def add_to_cart(product_id)
-    cart_product = carts_products.find_by(product_id: product_id)
-    if cart_product.present?
-      cart_product.increment!(:quantity, 1)
+    carts_product = carts_products.find_by(product_id: product_id)
+    if carts_product.present?
+      carts_product.increment!(:quantity, 1)
     else
       carts_products.create(product_id: product_id)
     end
   end
 
   def remove_from_cart(product_id)
-    cart_product = carts_products.find_by(product_id: product_id)
-    return if cart_product.blank?
-    if cart_product.quantity > 1
-      cart_product.decrement!(:quantity, 1)
+    carts_product = carts_products.find_by(product_id: product_id)
+    return if carts_product.blank?
+    if carts_product.quantity > 1
+      carts_product.decrement!(:quantity, 1)
     else
-      carts_products.destroy
+      carts_product.destroy
     end
   end
 end

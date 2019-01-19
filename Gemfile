@@ -25,12 +25,15 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Money gem integration with Rails (https://github.com/RubyMoney/money-rails)
 gem 'money-rails', '~>1.12'
-# Flexible authentication solution for Rails with Warden (https://github.com/plataformatec/devise)
-gem 'devise'
 # Object factory for Rails (https://github.com/thoughtbot/factory_bot_rails)
 gem 'factory_bot_rails'
 # A library for generating fake data (https://github.com/stympy/faker)
 gem 'faker', '~>1.9'
+# Ruby implementation of GraphQL (https://github.com/rmosolgo/graphql-ruby)
+gem 'graphql', '~>1.8'
+# Mount the GraphiQL query editor in a Rails app (https://github.com/rmosolgo/graphiql-rails)
+gem 'graphiql-rails', '~> 1.4', '>= 1.4.2'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

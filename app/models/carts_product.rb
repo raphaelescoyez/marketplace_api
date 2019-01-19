@@ -14,8 +14,11 @@ class CartsProduct < ApplicationRecord
   belongs_to :product
   belongs_to :cart
 
+  validates :product_id, uniqueness: { scope: :cart_id,
+    message: "Product already in your cart" }
+
   monetize :price_cents
-  
+
   def price_cents
     product.price_cents * quantity
   end

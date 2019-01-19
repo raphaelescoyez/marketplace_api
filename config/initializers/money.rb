@@ -1,10 +1,11 @@
 # encoding : utf-8
 
+Money.locale_backend = nil
 MoneyRails.configure do |config|
 
   # To set the default currency
   #
-  config.default_currency = :eur
+  config.default_currency = :usd
 
   # Set default bank object
   #
@@ -77,10 +78,10 @@ MoneyRails.configure do |config|
   # Default value is nil meaning "ignore this option".
   # Example:
   #
+  config.no_cents_if_whole = false
+  #
   # config.default_format = {
-  #   no_cents_if_whole: nil,
-  #   symbol: nil,
-  #   sign_before_symbol: nil
+  #   symbol_position: :after
   # }
 
   # Set default raise_error_on_money_parsing option

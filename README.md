@@ -15,7 +15,7 @@ This application is deployed on Heroku and can be tested easily thanks to Graphi
  5. The GraphiQL interface is now available at `http://localhost:3000`
 
 ## Database Schema
-![Schema description](https://marketplace-api-demo.herokuapp.com/marketplace-api.png)
+![Schema description](https://github.com/raphaelescoyez/marketplace_api/blob/master/public/marketplace_api.png?raw=true)
 
 Carts and Orders have very similar logic, the only difference is that Cart model is flexible to product price changes, Order has its own price attributes.
 

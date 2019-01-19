@@ -1,24 +1,142 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Barebone Marketplace API
 
-Things you may want to cover:
+Note : This is a code sample written in one day for Shopify in order to show some of my coding skills.
 
-* Ruby version
+This application is deployed on Heroku and can be tested easily thanks to GraphiQL
+[Query API online](https://marketplace-api-demo.herokuapp.com/)
 
-* System dependencies
+## Local Installation
 
-* Configuration
+ 1. Clone this repo
+ 2. Run `bundle install`
+ 3. Run `rails db:create && rails db:migrate && rails db:seed`
+ 4. Run `rails server`
+ 5. The GraphiQL interface is now available at `http://localhost:3000`
 
-* Database creation
+## Database Schema
+![Schema description](https://marketplace-api-demo.herokuapp.com/marketplace-api.png)
 
-* Database initialization
+Carts and Orders have very similar logic, the only difference is that Cart model is flexible to product price changes, Order has its own price attributes.
 
-* How to run the test suite
+## How to use
 
-* Services (job queues, cache servers, search engines, etc.)
+Use the following queries to complete an order.
+For more queries, follow the generated documentation on GraphiQL right pannel.
 
-* Deployment instructions
+### 1) Display all products
+```
+query {
+  products(availableOnly: false) {
+	id
+    title
+    description
+    price
+    inventoryCount
+  }
+}
+```
+`availableOnly` argument is optional
 
-* ...
+### 2) Add product to your cart
+Note : `cartId` is optional, if you don't have a cart yet, it will create one for you.
+```
+mutation {
+  addToCart(input:
+    {
+      productId: [selected_product_id]
+      cartId: [your_cart_id]
+    }
+  )
+  {
+    errors
+    cart {
+      id
+      totalPrice
+    }
+  }
+}
+```
+
+### 3) Add more products or remove some of them
+```
+mutation {
+  removeFromCart(input:
+    {
+      productId: [selected_product_id]
+      cartId: [your_cart_id]
+    }
+  )
+  {
+    errors
+    cart {
+      id
+      totalPrice
+      cartsProducts {
+        quantity
+        product {
+          id
+          title
+        }
+      }
+    }
+  }
+}
+```
+
+### 4) Display cart
+```
+query {
+  cart(id: [your_cart_id]) {
+    id
+	totalPrice
+	cartsProducts {
+        quantity
+        product {
+          title
+        }
+      }
+  }
+}
+```
+
+### 5) Place order
+```
+mutation {
+  placeOrder(input:
+    {
+	  cartId: [your_cart_id],
+	  email: "email@example.com"
+    }
+  )
+  {
+    errors
+  	order {
+      id
+      totalPriceCents
+      ordersProducts {
+        product {
+          title
+        }
+      }
+    }
+  }
+}
+```
+
+### 6) Read your order again
+```
+query {
+  order(id: [your_order_id]){
+    id
+    totalPrice
+    ordersProducts {
+      quantity
+      productPrice
+      product {
+      	title
+      }
+    }
+  }
+}
+```

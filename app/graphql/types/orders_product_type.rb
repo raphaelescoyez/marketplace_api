@@ -4,8 +4,7 @@ module Types
 
     field :id, ID, null: false
     field :product, ProductType, null: false
-    field :product_price_cents, Int, null: false
-    field :product_price_currency, String, null: false
+    field :product_price, Types::PriceType, null: false
     field :quantity, Int, null: false
   end
 end

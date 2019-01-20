@@ -13,8 +13,8 @@ RSpec.describe Cart, type: :model do
   let(:cart) { Cart.create }
 
   describe 'total_price' do
-    let(:product_a) { FactoryBot.create(:product, price_cents: 1000) }
-    let(:product_b) { FactoryBot.create(:product, price_cents: 2000) }
+    let(:product_a) { FactoryBot.create(:product, price_cents: 1000, inventory_count: 10) }
+    let(:product_b) { FactoryBot.create(:product, price_cents: 2000, inventory_count: 10) }
 
     it 'returns cart total price' do
       CartsProduct.create(cart: cart, product: product_a, quantity: 2)

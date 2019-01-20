@@ -10,18 +10,11 @@ module Mutations
 
     def resolve(**args)
       cart = Cart.find_or_create_by(id: args[:cart_id])
-      cart.add_to_cart(args[:product_id])
-      if cart.save
-        {
-          cart: cart,
-          errors: [],
-        }
-      else
-        {
-          cart: nil,
-          errors: cart.errors.full_messages
-        }
-      end
+      carts_product = cart.add_to_cart(args[:product_id])
+      {
+        cart: cart,
+        errors: carts_product.errors.full_messages
+      }
     end
   end
 end

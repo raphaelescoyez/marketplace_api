@@ -15,7 +15,7 @@ require 'rails_helper'
 RSpec.describe CartsProduct, type: :model do
 
   describe 'price_cents' do
-    let(:product) { FactoryBot.create(:product, price_cents: 100) }
+    let(:product) { FactoryBot.create(:product, price_cents: 100, inventory_count: 10) }
 
     it 'returns quantity * product_price_cents' do
       carts_product = CartsProduct.new(product: product, quantity: 6)

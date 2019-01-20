@@ -17,4 +17,11 @@ class Product < ApplicationRecord
 
   scope :available, -> { where("inventory_count > ?", 0) }
   scope :out_of_stock, -> { where(inventory_count: 0) }
+
+  has_many :carts_product
+  has_many :orders_product
+
+  def available?
+    inventory_count > 0
+  end
 end

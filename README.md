@@ -11,7 +11,7 @@ This application is deployed on Heroku and can be tested easily thanks to Graphi
 ### Prerequisite
 - Ruby 2.5.0
 - Rails 5.2
-- Postgresql 
+- Postgresql
 
  1. Clone this repo
  2. Run `bundle install`
@@ -33,7 +33,7 @@ For more queries, follow the generated documentation on [GraphiQL](https://marke
 ```
 query {
   products(availableOnly: false) {
-	id
+  id
     title
     description
     price
@@ -94,13 +94,13 @@ mutation {
 query {
   cart(id: [your_cart_id]) {
     id
-	totalPrice
-	cartsProducts {
-        quantity
-        product {
-          title
-        }
+  totalPrice
+  cartsProducts {
+      quantity
+      product {
+        title
       }
+    }
   }
 }
 ```
@@ -110,15 +110,15 @@ query {
 mutation {
   placeOrder(input:
     {
-	  cartId: [your_cart_id],
-	  email: "email@example.com"
+    cartId: [your_cart_id],
+    email: "email@example.com"
     }
   )
   {
     errors
-  	order {
+    order {
       id
-      totalPriceCents
+      totalPrice
       ordersProducts {
         product {
           title

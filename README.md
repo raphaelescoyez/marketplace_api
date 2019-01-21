@@ -4,7 +4,7 @@
 Note : This is a code sample written in one day for Shopify in order to show some of my coding skills.
 
 This application is deployed on Heroku and can be tested easily thanks to GraphiQL.
- [Test API online](https://marketplace-api-demo.herokuapp.com/) 
+ [Test API online](https://marketplace-api-demo.herokuapp.com/)
 
 ## Local Installation
 
@@ -58,6 +58,13 @@ mutation {
     cart {
       id
       totalPrice
+      cartsProducts {
+        quantity
+        product {
+          id
+          title
+        }
+      }
     }
   }
 }

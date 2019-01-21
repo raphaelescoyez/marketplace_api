@@ -10,8 +10,7 @@ module Mutations
 
     def resolve(**args)
       order = Orders::CreateFromCart.new(args).call
-
-      if order.valid?
+      if order.persisted?
         {
           order: order,
           errors: [],
@@ -19,7 +18,7 @@ module Mutations
       else
         {
           order: nil,
-          errors: order.errors
+          errors: order.errors.full_messages
         }
       end
     end

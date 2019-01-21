@@ -24,7 +24,7 @@ module Orders
     def products_available?
       cart.carts_products.each do |cart_product|
         if cart_product.product.inventory_count < cart_product.quantity
-          order.errors.add(:base, "Product #{cart_product.product.title} is currently out of stock")
+          order.errors.add(:base, "Currently we cannot provide #{cart_product.quantity} items of #{cart_product.product.title}.")
           return false
         end
         true

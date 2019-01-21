@@ -15,6 +15,7 @@ class Order < ApplicationRecord
   has_many :products, through: :orders_products
 
   validates :total_price_cents, presence: true
+  validates :orders_products, presence: true
 
   monetize :total_price_cents
 end

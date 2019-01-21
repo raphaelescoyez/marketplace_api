@@ -56,7 +56,7 @@ describe Orders::CreateFromCart do
 
       it 'returns order with error' do
         order = Orders::CreateFromCart.new(arguments).call
-        expect(order.errors.full_messages).to include("Product #{product.title} is currently out of stock")
+        expect(order.errors.full_messages).to include("Currently we cannot provide 3 items of #{product.title}.")
       end
 
       it 'does not decrement product inventory_count' do
